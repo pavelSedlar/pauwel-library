@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -14,10 +15,11 @@ import { BooksModule } from './books/books.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: ':memory:',
-      entities: ['dist/**/*.entity{.tsm.js}'],
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     BooksModule,
+    AuthorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
